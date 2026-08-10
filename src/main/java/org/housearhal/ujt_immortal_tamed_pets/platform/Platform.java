@@ -1,4 +1,4 @@
-package com.example.modtemplate.platform;
+package org.housearhal.ujt_immortal_tamed_pets.platform;
 
 public interface Platform {
 	boolean isModLoaded(String modId);

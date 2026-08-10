@@ -1,30 +1,26 @@
-loomx.loom_version="1.16-SNAPSHOT"
+loomx.loom_version = "1.16-SNAPSHOT"
 
-mod.id = "modtemplate"
-mod.name = "Mod Template"
-mod.group = "com.example"
-mod.version = "0.1.0"
-mod.channel_tag = "-alpha.2"
-mod.description = "Example Description"
-mod.authors = ["AuthorName", "AnotherAuthorName"]
-mod.contributors = ["ContributorName", "AnotherContributorName"]
+mod.id = "ujt_immortal_tamed_pets"
+mod.name = "UJT - Immortal Tamed Pets"
+mod.group = "org.housearhal"
+mod.version = "1.0.0"
+mod.channel_tag = ""
+mod.description = ""
+mod.authors = ["Valerie Arhal"]
+mod.contributors = ["Valerie Arhal"]
 mod.inception_year = "2025"
-mod.license.name = "MIT"
-mod.license.url = "https://opensource.org/licenses/MIT"
+mod.license.name = "All Rights Reserved"
+mod.license.url = ""
 mod.license.dist = "repo"
-mod.sources_url = "https://github.com/rotgruengelb/stonecutter-mod-template"
-mod.homepage_url = "https://github.com/rotgruengelb/stonecutter-mod-template"
-mod.issues_url = "https://github.com/rotgruengelb/stonecutter-mod-template/issues"
-mod.discord_url = "https://discord.gg/aunYJB4wz9"
+mod.sources_url = "https://github.com/HouseArhal/UJT-Immortal-Tamed-Pets"
+mod.homepage_url = "https://github.com/HouseArhal/UJT-Immortal-Tamed-Pets"
+mod.issues_url = "https://github.com/HouseArhal/UJT-Immortal-Tamed-Pets/issues"
+mod.discord_url = "https://discord.gg/44fSbYrzZd"
 mod.environment = "both"   #"client", "server", "both"
 [[mod.pom.developers]]
-id = "authorname"
-name = "AuthorName"
-url = "https://github.com/ghost"
-[[mod.pom.developers]]
-id = "anotherauthorname"
-name = "AnotherAuthorName"
-url = "https://github.com/ghost"
+id = "valeriearhal"
+name = "Valerie Arhal"
+url = "https://github.com/Valerie-Bosco"
 
 [fabric]
 deps.fabric-loader = "0.19.2"
@@ -37,7 +33,7 @@ deps.modmenu = "4.2.0-beta.2"
 [fabric."1.21.1"]
 deps.minecraft = "1.21.1"
 deps.fabric-api = "0.116.7+1.21.1"
-deps.modmenu = "15.0.0"
+deps.modmenu = "11.0.4"
 
 [fabric."1.21.7"]
 deps.minecraft = "1.21.7"

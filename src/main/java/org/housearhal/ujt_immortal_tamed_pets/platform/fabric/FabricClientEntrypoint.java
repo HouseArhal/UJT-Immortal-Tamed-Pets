@@ -1,8 +1,8 @@
-package com.example.modtemplate.platform.fabric;
+package org.housearhal.ujt_immortal_tamed_pets.platform.fabric;
 
 //? fabric {
 
-import com.example.modtemplate.ModTemplate;
+import org.housearhal.ujt_immortal_tamed_pets.UJTImmortalTamedPets;
 import dev.kikugie.fletching_table.annotation.fabric.Entrypoint;
 import net.fabricmc.api.ClientModInitializer;
 
@@ -11,8 +11,7 @@ public class FabricClientEntrypoint implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		ModTemplate.onInitializeClient();
+		UJTImmortalTamedPets.onInitializeClient();
 	}
-
 }
 //?}

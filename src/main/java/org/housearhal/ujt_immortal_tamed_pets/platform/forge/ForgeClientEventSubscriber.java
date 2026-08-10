@@ -1,8 +1,8 @@
-package com.example.modtemplate.platform.forge;
+package org.housearhal.ujt_immortal_tamed_pets.platform.forge;
 
 //? forge {
 
-/*import com.example.modtemplate.ModTemplate;
+/*import org.housearhal.ujt_immortal_tamed_pets.ModTemplate;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

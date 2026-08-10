@@ -1,4 +1,4 @@
-package com.example.modtemplate.platform.fabric.datagen;
+package org.housearhal.ujt_immortal_tamed_pets.platform.fabric.datagen;
 
 //? fabric {
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;

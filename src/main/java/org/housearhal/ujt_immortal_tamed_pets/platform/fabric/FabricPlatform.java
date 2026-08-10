@@ -1,9 +1,9 @@
-package com.example.modtemplate.platform.fabric;
+package org.housearhal.ujt_immortal_tamed_pets.platform.fabric;
 
 //? fabric {
 
-import com.example.modtemplate.platform.Platform;
 import net.fabricmc.loader.api.FabricLoader;
+import org.housearhal.ujt_immortal_tamed_pets.platform.Platform;
 
 public class FabricPlatform implements Platform {
 
