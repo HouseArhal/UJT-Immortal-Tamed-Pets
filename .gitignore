@@ -1,13 +1,25 @@
 .env
+.env.
+.jks
+.keystore
+.p12
+.pem
+.key
+
 .gradle
 .kotlin
 .cache/
+
 build/
+run/
+
+
+
+
+!.env.template
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-
-run/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
