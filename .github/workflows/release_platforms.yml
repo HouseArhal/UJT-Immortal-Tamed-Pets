@@ -1,9 +1,12 @@
+name: Release Platforms
+
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - release
 
 jobs:
-  platform-release:
-    name: Release to Platforms
+  release-platforms:
     runs-on: ubuntu-latest
     continue-on-error: true
 
@@ -29,7 +32,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
