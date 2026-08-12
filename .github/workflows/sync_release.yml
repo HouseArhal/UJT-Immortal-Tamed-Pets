@@ -19,6 +19,6 @@ jobs:
       - name: Sync release branch from main
         run: |
           git fetch origin main
-          git checkout release
+          git checkout origin/release
           git merge origin/main
           git push origin release
