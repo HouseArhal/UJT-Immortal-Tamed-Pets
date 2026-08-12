@@ -18,6 +18,8 @@ jobs:
 
       - name: Sync release branch from main
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "valeriearhal.business@gmail.com"
           git fetch origin main
           git checkout origin/release
           git merge origin/main
