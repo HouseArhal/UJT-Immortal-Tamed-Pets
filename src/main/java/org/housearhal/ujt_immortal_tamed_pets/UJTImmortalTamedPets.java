@@ -18,7 +18,7 @@ import org.housearhal.ujt_immortal_tamed_pets.platform.fabric.FabricPlatform;
 public class UJTImmortalTamedPets {
 
 	public static final String MOD_ID = /*$ mod_id*/ "ujt_immortal_tamed_pets";
-	public static final String MOD_VERSION = /*$ mod_version*/ "1.0.0";
+	public static final String MOD_VERSION = /*$ mod_version*/ "1.0.1";
 	public static final String MOD_FRIENDLY_NAME = /*$ mod_name*/ "UJT - Immortal Tamed Pets";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
