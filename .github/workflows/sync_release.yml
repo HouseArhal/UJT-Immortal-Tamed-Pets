@@ -53,4 +53,4 @@ jobs:
     needs: sync-release-branch
     uses: ./.github/workflows/release.yml
     with:
-      tag: ${{ github.ref_name }}
+      tag: ${{ GITHUB_REF_NAME }}
