@@ -1,11 +1,13 @@
 name: release
 
 on:
-  push:
-    branches:
-      - release
-    tags:
-      - '*'
+  workflow_call:
+    inputs:
+      tag:
+        description: "The tag to release"
+        type: string
+        required: true
+
 
 permissions:
   contents: write
@@ -27,7 +29,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG="${GITHUB_REF_NAME}"
+          TAG="${{ github.event.inputs.tag }}"
           VERSION=$(grep '^mod\.version' stonecutter.properties.toml | cut -d'"' -f2)
           CHANNEL_TAG=$(grep '^mod\.channel_tag' stonecutter.properties.toml | cut -d'"' -f2)
           FULL_VERSION="${VERSION}${CHANNEL_TAG}"
@@ -77,7 +79,7 @@ jobs:
         uses: orhun/git-cliff-action@v4
         with:
           args: --latest --strip header --output CHANGELOG.md
-          version: 'v2.10.1'
+          version: 'v2.13.1'
 
       - name: Check GitHub releases toggle
         id: check
@@ -124,7 +126,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG="${GITHUB_REF_NAME}"
+          TAG="${{ github.event.inputs.tag }}"
           echo "Creating or updating release for $TAG"
           # Try to create the release first
           if ! gh release create "$TAG" \
