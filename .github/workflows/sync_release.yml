@@ -26,8 +26,6 @@ permissions:
 
 jobs:
   sync-release-branch:
-    if: contains(github.head_commit.message, '-sync')
-
     runs-on: ubuntu-latest
 
     steps:
