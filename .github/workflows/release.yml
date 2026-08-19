@@ -34,7 +34,7 @@ jobs:
 
           echo "Validating tag '$TAG' against version '$FULL_VERSION'..."
           if [[ "$TAG" != "$FULL_VERSION" ]]; then
-            echo "::error::Tag '$TAG' does not match version '$FULL_VERSION' in gradle.properties."
+            echo "::error::Tag '$TAG' does not match version '$FULL_VERSION' in stonecutter.properties.toml."
 
             if gh release view "$TAG" &>/dev/null; then
               echo "Deleting GitHub release for $TAG..."
@@ -48,7 +48,7 @@ jobs:
 
   build:
     needs: validate
-    uses: ./.github/workflows/build_reusable.yml
+    uses: ./.github/workflows/build.yml
     with:
       release: true
 
@@ -149,3 +149,68 @@ jobs:
               gh release upload "$TAG" "$FILE" --clobber
             done
           fi
+
+
+  release-platforms:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    env:
+      MOD_IS_RELEASE: true
+      PUB_DRY_RUN: ${{ vars.PUB_DRY_RUN }}
+      PUB_MODS_ENABLE: ${{ vars.PUB_MODS_ENABLE }}
+      PUB_MAVEN_ENABLE: ${{ vars.PUB_MAVEN_ENABLE }}
+      PUB_MAVEN_CENTRAL_ENABLE: ${{ vars.PUB_MAVEN_CENTRAL_ENABLE }}
+      PUB_MAVEN_CENTRAL_SNAPSHOTS: ${{ vars.PUB_MAVEN_CENTRAL_SNAPSHOTS }}
+      PUB_MODRINTH_STAGING: ${{ vars.PUB_MODRINTH_STAGING }}
+      PUB_MODRINTH_PROJECT_ID: ${{ vars.PUB_MODRINTH_PROJECT_ID }}
+      PUB_CURSEFORGE_PROJECT_ID: ${{ vars.PUB_CURSEFORGE_PROJECT_ID }}
+      PUB_MODRINTH_TOKEN: ${{ secrets.PUB_MODRINTH_TOKEN }}
+      PUB_CURSEFORGE_TOKEN: ${{ secrets.PUB_CURSEFORGE_TOKEN }}
+      PUB_SIGNING_KEY: ${{ secrets.PUB_SIGNING_KEY }}
+      PUB_SIGNING_ID: ${{ secrets.PUB_SIGNING_ID }}
+      PUB_SIGNING_PASSWORD: ${{ secrets.PUB_SIGNING_PASSWORD }}
+      PUB_MAVEN_CENTRAL_USERNAME: ${{ secrets.PUB_MAVEN_CENTRAL_USERNAME }}
+      PUB_MAVEN_CENTRAL_PASSWORD: ${{ secrets.PUB_MAVEN_CENTRAL_PASSWORD }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: build/libs/
+
+      - name: Download changelog
+        uses: actions/download-artifact@v4
+        with:
+          name: changelog
+          path: .
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 25
+          distribution: 'microsoft'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: wrapper
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Publish to Platforms
+        run: ./gradlew publishMods --stacktrace
