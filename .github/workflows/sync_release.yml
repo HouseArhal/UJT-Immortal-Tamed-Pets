@@ -26,6 +26,8 @@ permissions:
 
 jobs:
   sync-release-branch:
+    if: contains(github.event.head_commit.message, '-sync') || contains(github.event.head_commit.message, '-release')
+
     runs-on: ubuntu-latest
 
     steps:
@@ -45,7 +47,7 @@ jobs:
           git push --force-with-lease origin release
 
   trigger-release:
-    if: contains(github.head_commit.message, '-release')
+    if: contains(github.event.head_commit.message, '-release')
 
     needs: sync-release-branch
     uses: ./.github/workflows/release.yml
