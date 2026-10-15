@@ -1,29 +1,15 @@
 name: build
-on:
-  workflow_call:
-    inputs:
-      release:
-        description: "Whether this is a release build"
-        type: boolean
-        default: false
-    outputs:
-      artifact-name:
-        description: "Name of the uploaded build artifact"
-        value: ${{ jobs.build.outputs.artifact-name }}
+on: push
 
 jobs:
   build:
+    if: contains(github.event.head_commit.message, '-build')
+
     name: Build Project
     runs-on: ubuntu-latest
-    outputs:
-      artifact-name: ${{ steps.upload.outputs.artifact-name }}
-
-    env:
-      MOD_IS_RELEASE: ${{ inputs.release }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
@@ -38,21 +24,10 @@ jobs:
         with:
           gradle-version: wrapper
 
-      - name: Cache Gradle packages
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-
       - name: Build with Gradle
-        run: ./gradlew buildAndCollect --no-daemon
+        run: ./gradlew buildAndCollect --no-daemon --stacktrace --console=plain
 
       - name: Upload artifacts
-        id: upload
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
