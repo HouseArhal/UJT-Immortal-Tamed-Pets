@@ -6,14 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 //? fabric {
-/*import org.housearhal.ujt_immortal_tamed_pets.platform.fabric.FabricPlatform;
+import org.housearhal.ujt_immortal_tamed_pets.platform.fabric.FabricPlatform;
  
-*///?} neoforge {
+//?} neoforge {
 /*import org.housearhal.ujt_immortal_tamed_pets.platform.neoforge.NeoforgePlatform;
  
 *///?} forge {
-import org.housearhal.ujt_immortal_tamed_pets.platform.forge.ForgePlatform;
-//?}
+/*import org.housearhal.ujt_immortal_tamed_pets.platform.forge.ForgePlatform;
+*///?}
 
 @SuppressWarnings("LoggingSimilarMessage")
 public class UJTImmortalTamedPets {
@@ -59,39 +59,39 @@ public class UJTImmortalTamedPets {
 
 	private static Platform createPlatformInstance() {
 		//? fabric {
-		/*return new FabricPlatform();
-		 *///?} neoforge {
+		return new FabricPlatform();
+		 //?} neoforge {
 		/*return new NeoforgePlatform();
 		 *///?} forge {
-		return new ForgePlatform();
-		//?}
+		/*return new ForgePlatform();
+		*///?}
 	}
 
 	private static ResourceLocation id(String path) {
 		//? >=1.21.1 {
-		/*return ResourceLocation.fromNamespaceAndPath(
+		return ResourceLocation.fromNamespaceAndPath(
 				MOD_ID,
 				path
 		);
-		*///?} <1.21.1 {
-		return new ResourceLocation(
+		//?} <1.21.1 {
+		/*return new ResourceLocation(
 				MOD_ID,
 				path
 		);
-		//?}
+		*///?}
 	}
 
 	private static ResourceLocation id(String namespace, String path) {
 		//? >=1.21.1 {
-		/*return ResourceLocation.fromNamespaceAndPath(
+		return ResourceLocation.fromNamespaceAndPath(
 				namespace,
 				path
 		);
-		*///?} <1.21.1 {
-		return new ResourceLocation(
+		//?} <1.21.1 {
+		/*return new ResourceLocation(
 				namespace,
 				path
 		);
-		//?}
+		*///?}
 	}
 }

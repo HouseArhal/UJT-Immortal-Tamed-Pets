@@ -5,7 +5,6 @@ pluginManagement {
 		gradlePluginPortal()
 		maven("https://maven.fabricmc.net/") { name = "Fabric" }
 		maven("https://maven.neoforged.net/releases/") { name = "NeoForged" }
-		maven("https://maven.minecraftforge.net/") { name = "Minecraft Forge" }
 		maven("https://maven.kikugie.dev/snapshots") { name = "KikuGie Snapshots" }
 		maven("https://maven.kikugie.dev/releases") { name = "KikuGie Releases" }
 		maven("https://maven.parchmentmc.org") { name = "ParchmentMC" }
@@ -15,7 +14,7 @@ pluginManagement {
 
 plugins {
 	id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
-	id("dev.kikugie.stonecutter") version "0.9.2"
+	id("dev.kikugie.stonecutter") version "0.9.8"
 	id("dev.kikugie.loom-back-compat") version "0.4.1"
 }
 
@@ -27,7 +26,6 @@ stonecutter {
 
 		match("1.21.1", "fabric", "neoforge")
 		match("1.20.1", "forge")
-
 
 		//vcsVersion = "1.21.7-fabric"
 	}

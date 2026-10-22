@@ -1,22 +1,42 @@
-loomx.loom_version = "1.16-SNAPSHOT"
+loomx.loom_version = "1.18-SNAPSHOT"
 
-mod.id = "ujt_immortal_tamed_pets"
-mod.name = "UJT - Immortal Tamed Pets"
-mod.group = "org.housearhal"
-mod.version = "1.0.1"
-mod.channel_tag = ""
-mod.description = ""
-mod.authors = ["Valerie Arhal"]
-mod.contributors = ["Valerie Arhal"]
-mod.inception_year = "2025"
-mod.license.name = "All Rights Reserved"
-mod.license.url = ""
-mod.license.dist = "repo"
-mod.sources_url = "https://github.com/HouseArhal/UJT-Immortal-Tamed-Pets"
-mod.homepage_url = "https://github.com/HouseArhal/UJT-Immortal-Tamed-Pets"
-mod.issues_url = "https://github.com/HouseArhal/UJT-Immortal-Tamed-Pets/issues"
-mod.discord_url = "https://discord.gg/44fSbYrzZd"
-mod.environment = "both"
+[mod]
+id = "ujt_immortal_tamed_pets"
+name = "UJT - Immortal Tamed Pets"
+group = "org.housearhal"
+version = "1.0.1"
+channel_tag = ""
+description = ""
+authors = ["Valerie Arhal"]
+contributors = ["Valerie Arhal"]
+inception_year = "2025"
+license.name = "All Rights Reserved"
+license.url = ""
+license.dist = "repo"
+environment = "client_and_server"
+sources_url = "https://github.com/HouseArhal/UJT-Immortal-Tamed-Pets"
+homepage_url = "https://github.com/HouseArhal/UJT-Immortal-Tamed-Pets"
+issues_url = "https://github.com/HouseArhal/UJT-Immortal-Tamed-Pets/issues"
+discord_url = "https://discord.gg/44fSbYrzZd"
+dev_jvm_args = [
+	"-XX:+IgnoreUnrecognizedVMOptions",
+	"-XX:+UseZGC",
+	"-XX:+HeapDumpOnOutOfMemoryError",
+	"-XX:HeapDumpPath=heapdump.hprof",
+	"-XX:+ShowCodeDetailsInExceptionMessages",
+	"-XX:+UseCompactObjectHeaders",
+	"-XX:+AlwaysPreTouch",
+	"-XX:+UseStringDeduplication",
+	"-Dfile.encoding=UTF-8"
+]
+dev_jvm_args_mixin_debug = [
+	"-Dmixin.env.remapRefMap=true",
+	"-Dmixin.debug.verbose=true",
+	"-Dmixin.debug.verify=true",
+	"-Dmixin.debug.countInjections=true",
+	"-Dmixin.debug=true",
+	"-Dmixin.debug.export=true"
+]
 [[mod.pom.developers]]
 id = "valeriearhal"
 name = "Valerie Arhal"
