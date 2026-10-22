@@ -1,18 +1,19 @@
 package org.housearhal.ujt_immortal_tamed_pets;
 
-import org.housearhal.ujt_immortal_tamed_pets.platform.Platform;
-
 import net.minecraft.resources.ResourceLocation;
+import org.housearhal.ujt_immortal_tamed_pets.platform.Platform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 //? fabric {
-import org.housearhal.ujt_immortal_tamed_pets.platform.fabric.FabricPlatform;
-//?} neoforge {
+/*import org.housearhal.ujt_immortal_tamed_pets.platform.fabric.FabricPlatform;
+ 
+*///?} neoforge {
 /*import org.housearhal.ujt_immortal_tamed_pets.platform.neoforge.NeoforgePlatform;
- *///?} forge {
-/*import org.housearhal.ujt_immortal_tamed_pets.platform.forge.ForgePlatform;
- *///?}
+ 
+*///?} forge {
+import org.housearhal.ujt_immortal_tamed_pets.platform.forge.ForgePlatform;
+//?}
 
 @SuppressWarnings("LoggingSimilarMessage")
 public class UJTImmortalTamedPets {
@@ -25,13 +26,31 @@ public class UJTImmortalTamedPets {
 	private static final Platform PLATFORM = createPlatformInstance();
 
 	public static void onInitialize() {
-		LOGGER.info("Initializing {} on {}", MOD_ID, UJTImmortalTamedPets.xplat().loader());
-		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
+		LOGGER.info(
+				"Initializing {} on {}",
+				MOD_ID,
+				UJTImmortalTamedPets.xplat().loader()
+		);
+		LOGGER.debug(
+				"{}: { version: {}; friendly_name: {} }",
+				MOD_ID,
+				MOD_VERSION,
+				MOD_FRIENDLY_NAME
+		);
 	}
 
 	public static void onInitializeClient() {
-		LOGGER.info("Initializing {} Client on {}", MOD_ID, UJTImmortalTamedPets.xplat().loader());
-		LOGGER.debug("{}: { version: {}; friendly_name: {} }", MOD_ID, MOD_VERSION, MOD_FRIENDLY_NAME);
+		LOGGER.info(
+				"Initializing {} Client on {}",
+				MOD_ID,
+				UJTImmortalTamedPets.xplat().loader()
+		);
+		LOGGER.debug(
+				"{}: { version: {}; friendly_name: {} }",
+				MOD_ID,
+				MOD_VERSION,
+				MOD_FRIENDLY_NAME
+		);
 	}
 
 	static Platform xplat() {
@@ -40,27 +59,39 @@ public class UJTImmortalTamedPets {
 
 	private static Platform createPlatformInstance() {
 		//? fabric {
-		return new FabricPlatform();
-		//?} neoforge {
+		/*return new FabricPlatform();
+		 *///?} neoforge {
 		/*return new NeoforgePlatform();
 		 *///?} forge {
-		/*return new ForgePlatform();
-		 *///?}
+		return new ForgePlatform();
+		//?}
 	}
 
 	private static ResourceLocation id(String path) {
-		//? > 1.19.2 {
-		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
-		 //?} <= 1.19.2 {
-		/*return new ResourceLocation(MOD_ID, path);
-		*///?}
+		//? >=1.21.1 {
+		/*return ResourceLocation.fromNamespaceAndPath(
+				MOD_ID,
+				path
+		);
+		*///?} <1.21.1 {
+		return new ResourceLocation(
+				MOD_ID,
+				path
+		);
+		//?}
 	}
 
 	private static ResourceLocation id(String namespace, String path) {
-		//? > 1.19.2 {
-		return ResourceLocation.fromNamespaceAndPath(namespace, path);
-		 //?} <= 1.19.2 {
-		/*return new ResourceLocation(namespace, path);
-		*///?}
+		//? >=1.21.1 {
+		/*return ResourceLocation.fromNamespaceAndPath(
+				namespace,
+				path
+		);
+		*///?} <1.21.1 {
+		return new ResourceLocation(
+				namespace,
+				path
+		);
+		//?}
 	}
 }

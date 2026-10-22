@@ -2,8 +2,8 @@ package org.housearhal.ujt_immortal_tamed_pets.platform.forge;
 
 //? forge {
 
-/*import org.housearhal.ujt_immortal_tamed_pets.event.ExampleEventHandler; // sample_content
-import net.minecraft.server.level.ServerPlayer; // sample_content
+import net.minecraft.world.entity.TamableAnimal;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -11,11 +11,22 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber
 public class ForgeEventSubscriber {
 
-	@SubscribeEvent // sample_content
-	public static void onPlayerDamage(LivingDamageEvent event) { // sample_content
-		if (event.getEntity() instanceof ServerPlayer player && event.getAmount() > 0) { // sample_content
-			ExampleEventHandler.onPlayerHurt(player); // sample_content
-		} // sample_content
-	} // sample_content
+
+	@SubscribeEvent
+	public static void livingDamage(LivingDamageEvent event) {
+		if (event.getEntity() instanceof TamableAnimal && ((TamableAnimal) event.getEntity()).isTame()) {
+			event.setAmount(0);
+			event.setCanceled(true);
+		}
+	}
+
+	@SubscribeEvent
+	public static void onLivingAttack(LivingAttackEvent event) {
+		if (event.getEntity() instanceof TamableAnimal && ((TamableAnimal) event.getEntity()).isTame()) {
+			event.setCanceled(true);
+		}
+	}
+
+
 }
-*///?}
+//?}

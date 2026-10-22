@@ -2,7 +2,7 @@ package org.housearhal.ujt_immortal_tamed_pets.platform.fabric;
 
 //? fabric {
 
-import org.housearhal.ujt_immortal_tamed_pets.UJTImmortalTamedPets;
+/*import org.housearhal.ujt_immortal_tamed_pets.UJTImmortalTamedPets;
 import dev.kikugie.fletching_table.annotation.fabric.Entrypoint;
 import net.fabricmc.api.ClientModInitializer;
 
@@ -14,4 +14,4 @@ public class FabricClientEntrypoint implements ClientModInitializer {
 		UJTImmortalTamedPets.onInitializeClient();
 	}
 }
-//?}
+*///?}

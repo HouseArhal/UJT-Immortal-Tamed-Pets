@@ -2,7 +2,7 @@ package org.housearhal.ujt_immortal_tamed_pets.platform.fabric;
 
 //? fabric {
 
-import net.fabricmc.loader.api.FabricLoader;
+/*import net.fabricmc.loader.api.FabricLoader;
 import org.housearhal.ujt_immortal_tamed_pets.platform.Platform;
 
 public class FabricPlatform implements Platform {
@@ -27,4 +27,4 @@ public class FabricPlatform implements Platform {
 		return FabricLoader.getInstance().isDevelopmentEnvironment();
 	}
 }
-//?}
+*///?}

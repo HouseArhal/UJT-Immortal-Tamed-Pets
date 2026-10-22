@@ -2,7 +2,7 @@ package org.housearhal.ujt_immortal_tamed_pets.platform.fabric.datagen;
 
 //? fabric && != 1.19.2 {
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+/*import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -41,11 +41,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		provider.buildRecipes(recipeOutput);
 	}
 	//? } else {
-	/*@Override
+	/^@Override
 	protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
 		return new IntRecipeProvider(provider, recipeOutput);
 	}
-	*///? }
+	^///? }
 
 
 	@Override
@@ -75,7 +75,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 					);
 		}
 		//? } else {
-		/*protected IntRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+		/^protected IntRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
 			super(provider, recipeOutput);
 		}
 
@@ -85,7 +85,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 			buildLavaChickenRecipe(ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.FOOD, Items.COOKED_CHICKEN))
 					.save(output, "lava_chicken_recipe");
 		}
-		*///? }
+		^///? }
 
 		private ShapelessRecipeBuilder buildLavaChickenRecipe(ShapelessRecipeBuilder builder) {
 			return builder.requires(Items.LAVA_BUCKET)
@@ -101,4 +101,4 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		}
 	}
 }
-//?}
+*///?}
