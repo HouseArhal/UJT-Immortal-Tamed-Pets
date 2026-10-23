@@ -3,6 +3,11 @@ plugins {
 	id("net.neoforged.moddev.legacyforge")
 }
 
+kotlin {
+	jvmToolchain(17)
+}
+
+
 stonecutter {
 	replacements.string(current.parsed >= "1.21.11") {
 		replace("ResourceLocation", "Identifier")
@@ -57,11 +62,11 @@ legacyForge {
 	}
 }
 
-mixin {
-	add(sourceSets.main.get(), "${prop("mod.id")}.mixins.refmap.json")
-	config("${prop("mod.id")}.mixins.json")
-}
-
+// -----> SOURCE OF KSP FAILED TO GENERATE <-----
+//mixin {
+//	add(sourceSets.main.get(), "${prop("mod.id")}.mixins.refmap.json")
+//	config("${prop("mod.id")}.mixins.json")
+//}
 repositories {
 	mavenCentral()
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }

@@ -114,10 +114,17 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 				languageVersion.set(JavaLanguageVersion.of(ctx.javaVersion.majorVersion))
 			}
 		}
+
+		if (ctx.loader is Loader.Forge) {
+			tasks.matching { it.name == "compileJava" }.configureEach {
+				dependsOn(tasks.matching { it.name == "kspKotlin" })
+			}
+		}
 	}
 
 	private fun Project.registerGenerateManifestTask(ctx: Context) {
 		val manifestOutputDir = layout.buildDirectory.dir("generated/modManifest")
+
 		abstract class GenerateModManifestTask : DefaultTask() {
 			@get:Input
 			abstract val content: Property<String>
@@ -132,6 +139,7 @@ abstract class ModPlatformPlugin @Inject constructor() : Plugin<Project> {
 				file.writeText(content.get())
 			}
 		}
+
 		val generateTask = tasks.register<GenerateModManifestTask>("generateModManifest") {
 			content.set(ctx.loader.generateManifest(ctx))
 			outputFile.set(layout.buildDirectory.file("generated/modManifest/${ctx.loader.modManifestPath}"))
